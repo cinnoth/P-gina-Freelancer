@@ -1,0 +1,306 @@
+:root {
+    --blanco:#ffffff;
+    --oscuro:#212121;
+    --primario: #597e8d;
+    --secundario: #556b9b;
+    --terciario: #ffd43c;
+    -gris: #757575;
+
+
+}
+
+html {
+    font-size: 62.5%;
+    /* Se agrega el código de https://www.paulirish.com/2012/box-sizing-border-box-ftw/
+    
+    Con el proposito de hacer que el padding no se agregue al tamaño final de un elemento.*/
+    box-sizing: border-box;
+    font-family: dm sa;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+
+body {
+    font-size:16px; /*1 rem= 10px*/
+    font-family: "Oswald", sans-serif;
+    background-image: linear-gradient(to top, #c6c4ff 0%, #e2dfed 100%);  /* Para agregar un fondo de degradado */
+}
+/**Especificidad: mientras más especifico sea un selector, es más probable que se apliquen. ¿Qué valores del CSS serán tomados en cuenta por el navegador?**/
+h1 {
+    font-size: 3.8rem;
+}
+
+h2 {
+    font-size: 2.8rem;
+}
+
+h3 {
+    font-size: 1.8rem;
+}
+
+h1,h2,h3 {
+    text-align: center;
+}
+
+.titulo span {
+    font-size: 2rem;
+}
+
+.contenedor {
+    max-width: 120rem;
+
+    /** margin-top: 0;
+    margin-right: auto;
+    margin-bottom: 0;
+    margin-left: auto; 
+    esto es lo mismo que hacer 'margin: 0 auto 0 auto;' **/
+
+    margin: 0 auto 0 auto;
+}
+
+.boton {
+    background-color: var(--secundario);
+    color: var(--blanco);
+    padding: 1rem 3rem;
+    margin-top: 1rem;
+    font-size: 2rem;
+    text-decoration: none;
+    text-transform: uppercase; /* Para volver el texto en mayuscula */
+    font-weight: bold;
+    border-radius: .5rem; /* Para reducir las esquinas del botón */
+    width: 90%;
+    text-align: center;
+    border: none;
+}
+
+@media (min-width: 600px) {
+    .boton {
+        width: auto;
+    }
+}
+
+.boton:hover {
+    cursor: pointer;
+}
+
+.sombra { /* Obtenido de https://www.cssmatic.com/box-shadow */
+    -webkit-box-shadow: 0px 5px 15px 0px rgba(102,98,102,0.49);
+-moz-box-shadow: 0px 5px 15px 0px rgba(102,98,102,0.49);
+box-shadow: 0px 5px 15px 0px rgba(102,98,102,0.49);
+background-color: #e2dfed;
+padding: 2rem;
+border-radius: 1rem;
+}
+
+/* Utilidades */
+.w-100 {
+    width: 100%;
+}
+@media (min-width: 600px) {
+    .w-100 {
+        width: auto;
+    }
+}
+
+.flex {
+    display: flex;
+
+}
+.alinear-derecha {
+    justify-content: flex-end;
+
+}
+
+.nav-bg {
+    background-color: var(--secundario);
+    
+}
+
+.navegación-principal {
+    display: flex; /**No es necesario especificar un display para cada elemento, salvo que desees modificar el que viene por default **/
+    flex-direction: column;
+    
+/* Empieza responsive Web Design y uso de Media Query: Hacer tu sitio web adaptable a diferentes dispositivos */
+/* Uso de media query 1era  se agrega el flex direction: column en la clase .navegación-principal y añade max-width al .contenedor*/
+}
+@media (min-width: 600px) {
+    .navegación-principal {
+        flex-direction: row;
+        justify-content: space-between; /**Para separar los enlaces**/
+    }
+}
+.navegación-principal a {
+    display: block;
+    text-align: center;
+    color: var(--blanco);
+    text-decoration: none; /**quitar la linea de los enlaces**/
+
+    font-weight: 700;
+    font-size: 2rem;
+    padding: 1rem;
+    
+}
+
+/* La pseudo-clase :hover de CSS coincide cuando el usuario interactúa con un elemento con un dispositivo señalador, pero no necesariamente lo activa. Generalmente se activa cuando el usuario se desplaza sobre un elemento con el cursor (puntero del mouse). */
+.navegación-principal a:hover {
+    background-color: var(--terciario);
+    color: var(--oscuro)
+
+}
+
+/* .navegación-principal a:visited {
+    color: darkorange;
+} 
+    Para hacer que cambie de color el enlace una vez que se haya visitado*/
+
+    
+.hero {
+    /* Para trabajar con imagenes de fondo */
+    background-image: url(../Assets/img.jpeg) ;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 450px;
+    
+    /* El padre siempre debe llevar position relative para que el hijo, que en este caso es .contenido-hero, se pueda posicionar. */
+    position: relative;
+    margin-bottom: 2rem;
+}
+
+.contenido-hero {
+    position: absolute;
+    background-color: rgb(0 0 0 / 60%);
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+/* Para modificar la posición de un elemento se aplica el display: flex, seguido de flex-direction: columna (para columnas) y sólo se utiliza align items para el contenido en vertical.  Pero si quieres alinear tanto horizontal como verticalmente, entonces se usa el justify-content.
+
+Cuando aplicas el display flex solamente, entonces se va a utilizar el justify content*/
+
+}
+.contenido-hero h2,
+.contenido-hero p {
+    color: var(--blanco);
+
+}
+
+/*  
+.ubicacion {
+    display: flex;
+    align-items: flex-start;
+} */
+@media (min-width: 600px) {
+    .servicios {
+        display:grid;     /* Forma corta de realizar un grid
+        grid: 200px 800px / 300px 300px; */
+    
+        grid-template-columns: 33.3% 33.3% 33.3%; /* o poner grid-template-columns: 1fr 1fr 1fr; o poner grid-template-columns: repeat (3,1fr) es lo mismo  */
+        column-gap: 1rem; /* Para realizar la separación de columnas */
+    }
+}
+
+.servicio {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.servicio h3 {
+    color: var(--secundario);
+    text-align: center;
+    
+
+}
+
+.servicio p {
+    line-height: 2;
+    text-align: center;
+
+}
+
+.servicio .iconos {
+    height: 15rem;
+    width: 15rem;
+    background-color: var(--primario);
+    border-radius: 50%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+/* Contacto */
+
+.formulario {
+    background-color: #c6c4ff;
+    width: min(60rem, 100%); /* min utiliza el valor más pequeño. Asigna el ancho del numeor más pequeño entre 60 rem o el 100%*/
+    margin: 0 auto; /* utilizar margin cuando el contenedor padre no tenga un display flex */
+    padding: 2rem;
+    border-radius: 1rem;
+
+}
+
+.formulario fieldset {
+    border: none;
+}
+
+.formulario legend {
+    text-align: center;
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 2ren;
+    color: var(--secundario)
+}
+
+@media (min-width: 600px) {
+    .contenedor-campos {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto auto 20rem;
+        column-gap: 1rem;
+
+    }
+    .campo:nth-child(3),
+    .campo:nth-child(4) {
+        grid-column: 1 / 3;
+    
+    }
+}
+
+
+.campo {
+    margin-bottom: 1rem;
+
+}
+
+.campo label {
+    color: var(--blanco);
+    font-weight: bold;
+    margin-bottom: .5rem;
+    display: block;
+}
+
+.campo textarea {
+    height: 16rem;
+}
+.input-text { /*  Es lo mismo que definir una clase 
+    .campo input[type="text"], 
+    .campo input[type="tel"] {
+    } */
+    width: 100%;
+    border: none;
+    padding: 1.5rem;
+    border-radius: .5rem;
+}
+
+/* footer */
+.footer {
+    text-align: center;
+}
